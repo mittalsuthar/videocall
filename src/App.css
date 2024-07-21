@@ -71,3 +71,17 @@ video {
 .call-button:hover {
   background-color: #21a1f1;
 }
+
+.hangup-button {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.hangup-button:hover {
+  background-color: darkred;
+}

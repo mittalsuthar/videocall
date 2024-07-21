@@ -64,6 +64,36 @@ function App() {
       });
     }
   };
+  const hangUp = () => {
+    try {
+      if (!peerInstance.current) {
+        console.log("No active call to hang up.");
+        return;
+      }
+
+      // Close all media tracks
+      if (mediaStreamRef.current) {
+        mediaStreamRef.current.getTracks().forEach((track) => track.stop());
+        mediaStreamRef.current = null;
+      }
+
+      // Close the peer connection
+      peerInstance.current.destroy();
+      peerInstance.current = null;
+
+      // Reset the video elements
+      if (remoteVideoRef.current) {
+        remoteVideoRef.current.srcObject = null;
+      }
+      if (currentUserVideoRef.current) {
+        currentUserVideoRef.current.srcObject = null;
+      }
+
+      console.log("Hung up the call");
+    } catch (error) {
+      console.error("Error hanging up the call:", error);
+    }
+  };
 
   useEffect(() => {
     getUserMedia();
@@ -97,6 +127,9 @@ function App() {
         />
         <button onClick={() => call(remotePeerIdValue)} className="call-button">
           Call
+        </button>
+        <button onClick={hangUp} className="hangup-button">
+          Hang Up
         </button>
       </div>
     </div>
