@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/videocall/static/css/main.05564637.css",
-    "main.js": "/videocall/static/js/main.b17514a1.js",
+    "main.css": "/videocall/static/css/main.85ccb7df.css",
+    "main.js": "/videocall/static/js/main.88a89d2c.js",
     "static/js/453.fbae99c3.chunk.js": "/videocall/static/js/453.fbae99c3.chunk.js",
     "index.html": "/videocall/index.html",
-    "main.05564637.css.map": "/videocall/static/css/main.05564637.css.map",
-    "main.b17514a1.js.map": "/videocall/static/js/main.b17514a1.js.map",
+    "main.85ccb7df.css.map": "/videocall/static/css/main.85ccb7df.css.map",
+    "main.88a89d2c.js.map": "/videocall/static/js/main.88a89d2c.js.map",
     "453.fbae99c3.chunk.js.map": "/videocall/static/js/453.fbae99c3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.05564637.css",
-    "static/js/main.b17514a1.js"
+    "static/css/main.85ccb7df.css",
+    "static/js/main.88a89d2c.js"
   ]
 }
