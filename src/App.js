@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Peer from "peerjs";
+import axios from "axios";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,11 @@ function App() {
 
     peer.on("open", (id) => {
       setPeerId(id);
+      // Save user to the database
+      axios
+        .post("http://localhost:5000/connect", { peerId: id })
+        .then((response) => console.log("User saved:", response.data))
+        .catch((error) => console.error("Error saving user:", error));
     });
 
     peer.on("call", (call) => {
@@ -28,6 +34,14 @@ function App() {
               console.error("Failed to play remote stream", error)
             );
         });
+        // Save connection to the database
+        axios
+          .post("http://localhost:5000/connect", {
+            peerId,
+            connectedTo: call.peer,
+          })
+          .then((response) => console.log("Connection saved:", response.data))
+          .catch((error) => console.error("Error saving connection:", error));
       }
     });
 
@@ -62,8 +76,17 @@ function App() {
             console.error("Failed to play remote stream", error)
           );
       });
+      // Save connection to the database
+      axios
+        .post("http://localhost:5000/connect", {
+          peerId,
+          connectedTo: remotePeerId,
+        })
+        .then((response) => console.log("Connection saved:", response.data))
+        .catch((error) => console.error("Error saving connection:", error));
     }
   };
+
   const hangUp = () => {
     try {
       if (!peerInstance.current) {
