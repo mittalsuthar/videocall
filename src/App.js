@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import Peer from "peerjs";
 import axios from "axios";
 import "./App.css";
+import './index.css';
+
 
 function App() {
   const [peerId, setPeerId] = useState("");
